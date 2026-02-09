@@ -1,0 +1,22 @@
+# First you'll have to install qrcode
+# pip install qrcode[pil] or pip install qrcode # Your terminale execute this command
+# !pip install qrcode[pil] # if your working google colab
+
+# Now import it and PIL
+import qrcode
+from PIL import Image
+
+# Link that the qrcode leads to
+# It can be an img as well
+data = "https://www.youtube.com/watch?v=TfUZZ-AqQBM"
+
+qr = qrcode.QRCode(version=1,
+                   box_size=10,
+                   border=5)
+qr.add_data(data)
+qr.make(fit=True)
+img = qr.make_image(fill="black",back_color="white")
+
+# Create the qr img and open it
+img.save("qr.png")
+img.open("qr.png")
